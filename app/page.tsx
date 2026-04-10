@@ -57,7 +57,7 @@ export default function GhostGangUnified() {
                   func: "setVolume",
                   args: [10] // ปรับเหลือ 15% (เบาลงกว่าเดิม)
                 }), "*");
-              }, 2000);
+              }, 500);
             }}
           ></iframe>
         </div>
