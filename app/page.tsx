@@ -6,13 +6,11 @@ export default function GhostGangUnified() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // ฟังก์ชันสำหรับเข้าสู่หน้าเว็บและเริ่มเล่นเพลง
   const startExperience = () => {
     setView(1);
     setIsPlaying(true);
   };
 
-  // รวมรายชื่อสมาชิกทั้งหมด
   const allMembers = [
     { id: 1, name: "Hunter castellano", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/hunter.castellano.2025?locale=th_TH" },
     { id: 2, name: "Nampunch Rubmaidai", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/nong.grace.954672?locale=th_TH" },
@@ -42,7 +40,7 @@ export default function GhostGangUnified() {
     <>
       <title>GHOSTGANG</title>
 
-      {/* ระบบเพลงแบบปรับระดับเสียงได้ (ซ่อนไว้) */}
+      {/* FIXED: เพิ่มระบบหน่วงเวลาเพื่อให้คำสั่ง setVolume ทำงานได้จริง */}
       {isPlaying && (
         <div style={{ position: "fixed", top: "-1000px", left: "-1000px", opacity: 0, pointerEvents: "none" }}>
           <iframe
@@ -52,15 +50,21 @@ export default function GhostGangUnified() {
             allow="autoplay"
             onLoad={(e) => {
               const frame = e.target as HTMLIFrameElement;
-              // สั่งเบาเสียงเหลือ 20% ผ่าน YouTube API
-              frame.contentWindow?.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
+              // หน่วงเวลา 2 วินาทีเพื่อให้ Player พร้อมรับคำสั่ง (แก้ปัญหาเสียงไม่ลด)
+              setTimeout(() => {
+                frame.contentWindow?.postMessage(JSON.stringify({
+                  event: "command",
+                  func: "setVolume",
+                  args: [15] // ปรับเหลือ 15% (เบาลงกว่าเดิม)
+                }), "*");
+              }, 2000);
             }}
           ></iframe>
         </div>
       )}
 
       <main className="min-h-screen bg-[#050505] text-white font-sans uppercase overflow-x-hidden transition-all duration-700">
-        {/* ----------------- VIEW 0: LANDING (GHOST GANG) ----------------- */}
+        {/* ----------------- VIEW 0: LANDING ----------------- */}
         {view === 0 && (
           <div className="flex flex-col items-center justify-center min-h-screen text-center animate-in fade-in zoom-in duration-1000 px-6">
             <h1 className="text-7xl md:text-9xl font-black tracking-tighter mb-4 italic">
