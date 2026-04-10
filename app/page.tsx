@@ -4,6 +4,10 @@ import { useState } from "react";
 export default function GhostGangUnified() {
   const [view, setView] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
+  export const metadata: Metadata = {
+  title: "GHOSTGANG",
+  description: "13GHOSTGANG IN BYOU",
+};
 
   // รวมรายชื่อสมาชิกทั้งหมด
   const allMembers = [
