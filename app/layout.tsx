@@ -12,10 +12,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// แก้ไขจุดสำคัญตรงนี้เพื่อให้ชื่อแท็บเปลี่ยน
+// ชื่อแท็บ GHOSTGANG ตามที่คุณตั้งไว้
 export const metadata: Metadata = {
-  title: "GHOSTGANG", // ชื่อที่จะปรากฏบน Browser Tab
-  description: "13GHOSTGANG IN BYOU - Security Protocol v2.0", // รายละเอียดเว็บ
+  title: "GHOSTGANG",
+  description: "13GHOSTGANG IN BYOU - Security Protocol v2.0",
 };
 
 export default function RootLayout({
@@ -25,9 +25,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* ส่วนของเพลง YouTube (ซ่อนไว้) */}
+        <div style={{ position: "fixed", top: "-100px", left: "-100px", opacity: 0, pointerEvents: "none" }}>
+          <iframe
+            width="1"
+            height="1"
+            src="https://www.youtube.com/embed/WDuBvEoL_m4?autoplay=1&loop=1&playlist=WDuBvEoL_m4"
+            allow="autoplay"
+          ></iframe>
+        </div>
+
         {children}
       </body>
     </html>
