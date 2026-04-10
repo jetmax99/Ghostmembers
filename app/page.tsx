@@ -55,7 +55,7 @@ export default function GhostGangUnified() {
                 frame.contentWindow?.postMessage(JSON.stringify({
                   event: "command",
                   func: "setVolume",
-                  args: [15] // ปรับเหลือ 15% (เบาลงกว่าเดิม)
+                  args: [10] // ปรับเหลือ 15% (เบาลงกว่าเดิม)
                 }), "*");
               }, 2000);
             }}
