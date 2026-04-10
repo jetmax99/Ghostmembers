@@ -4,6 +4,13 @@ import { useState } from "react";
 export default function GhostGangUnified() {
   const [view, setView] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // ฟังก์ชันสำหรับเข้าสู่หน้าเว็บและเริ่มเล่นเพลง
+  const startExperience = () => {
+    setView(1);
+    setIsPlaying(true);
+  };
 
   // รวมรายชื่อสมาชิกทั้งหมด
   const allMembers = [
@@ -33,8 +40,19 @@ export default function GhostGangUnified() {
 
   return (
     <>
-      {/* เพิ่มส่วนนี้เพื่อเปลี่ยนชื่อบน Tab Browser */}
       <title>GHOSTGANG</title>
+
+      {/* เพลงจาก YouTube จะโหลดเมื่อ isPlaying เป็น true (หลังกดปุ่ม) */}
+      {isPlaying && (
+        <div style={{ position: "fixed", top: "-1000px", left: "-1000px", opacity: 0, pointerEvents: "none" }}>
+          <iframe
+            width="1"
+            height="1"
+            src="https://www.youtube.com/embed/WDuBvEoL_m4?autoplay=1&loop=1&playlist=WDuBvEoL_m4"
+            allow="autoplay"
+          ></iframe>
+        </div>
+      )}
 
       <main className="min-h-screen bg-[#050505] text-white font-sans uppercase overflow-x-hidden transition-all duration-700">
         {/* ----------------- VIEW 0: LANDING (GHOST GANG) ----------------- */}
@@ -47,7 +65,7 @@ export default function GhostGangUnified() {
               13GHOSTGANG IN BYOU
             </p>
             <button
-              onClick={() => setView(1)}
+              onClick={startExperience}
               className="group relative px-20 py-5 bg-transparent border border-gray-800 rounded-full overflow-hidden transition-all hover:border-white active:scale-95"
             >
               <span className="relative z-10 font-bold tracking-[0.4em] text-xs">
@@ -95,19 +113,16 @@ export default function GhostGangUnified() {
                   key={member.id}
                   className={`relative group bg-[#0a0a0a] border ${member.color} p-6 rounded-2xl flex items-center gap-6 hover:bg-[#111111] hover:border-white transition-all duration-300 overflow-hidden shadow-xl`}
                 >
-                  {/* Glow Side Accent */}
                   <div
                     className={`absolute top-0 left-0 w-1 h-full bg-current ${
                       member.role === "VACANT" ? "text-gray-900" : "text-gray-500"
                     } opacity-30`}
                   ></div>
 
-                  {/* ID Badge */}
                   <div className="absolute top-4 right-6 text-[10px] font-mono text-gray-800 group-hover:text-gray-500 transition-colors">
                     #{String(member.id).padStart(2, "0")}
                   </div>
 
-                  {/* Avatar Box */}
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 flex items-center justify-center flex-shrink-0 group-hover:border-gray-500 transition-all relative overflow-hidden">
                     <span className="text-xl font-black text-gray-700 group-hover:text-white z-10">
                       {member.name[0]}
@@ -115,7 +130,6 @@ export default function GhostGangUnified() {
                     <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
 
-                  {/* Member Info */}
                   <div className="flex-grow">
                     <h4
                       className={`text-lg font-black tracking-tight ${
@@ -141,7 +155,6 @@ export default function GhostGangUnified() {
                     </div>
                   </div>
 
-                  {/* Facebook Link Icon */}
                   {member.fb && member.role !== "VACANT" && (
                     <a
                       href={member.fb}
@@ -158,7 +171,6 @@ export default function GhostGangUnified() {
               ))}
             </div>
 
-            {/* Directory Stats Footer */}
             <div className="mt-20 pt-10 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-[9px] tracking-[0.4em] text-gray-700 font-bold gap-4">
               <div>GATEWAY: ONLINE</div>
               <div>
@@ -171,10 +183,8 @@ export default function GhostGangUnified() {
           </div>
         )}
 
-        {/* Unified Background Decor */}
         <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
 
-        {/* Footer Branding */}
         <footer className="fixed bottom-6 w-full text-center text-[8px] tracking-[0.8em] text-gray-800 uppercase pointer-events-none z-50">
           Ghost Gang • Security Protocol v2.0
         </footer>
