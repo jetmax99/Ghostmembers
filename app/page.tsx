@@ -50,12 +50,12 @@ export default function GhostGangUnified() {
             allow="autoplay"
             onLoad={(e) => {
               const frame = e.target as HTMLIFrameElement;
-              // หน่วงเวลา 2 วินาทีเพื่อให้ Player พร้อมรับคำสั่ง (แก้ปัญหาเสียงไม่ลด)
+              
               setTimeout(() => {
                 frame.contentWindow?.postMessage(JSON.stringify({
                   event: "command",
                   func: "setVolume",
-                  args: [10] // ปรับเหลือ 15% (เบาลงกว่าเดิม)
+                  args: [10] 
                 }), "*");
               }, 500);
             }}
