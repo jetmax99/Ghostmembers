@@ -11,27 +11,28 @@ export default function GhostGangUnified() {
     setIsPlaying(true);
   };
 
+  // รวมรายชื่อสมาชิกทั้งหมด 21 คน พร้อมฟิลด์ fb และ tt
   const allMembers = [
-    { id: 1, name: "Hunter castellano", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/hunter.castellano.2025?locale=th_TH" },
-    { id: 2, name: "Nampunch Rubmaidai", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/nong.grace.954672?locale=th_TH" },
-    { id: 3, name: "Bank Whatisluv", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/elle.whatisluv?locale=th_TH" },
-    { id: 4, name: "Semi Gardos", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61587489156557&locale=th_TH" },
-    { id: 5, name: "Razer Pentagram", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61578682112163&locale=th_TH" },
-    { id: 6, name: "Cartier Layla", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=100025885462092&locale=th_TH" },
-    { id: 7, name: "MeePhu Satxnic", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/meephu.satxnic?locale=th_TH" },
-    { id: 8, name: "Saka Readyplus", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/saka.readyplus?locale=th_TH" },
-    { id: 9, name: "Mindbabe Ygz", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/babebee.bebe?locale=th_TH" },
-    { id: 10, name: "Thingthing Hologram", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61579514684476&locale=th_TH" },
-    { id: 11, name: "Ren Raknamaewmeow", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/Ren.WinterfellZiller?locale=th_TH" },
-    { id: 12, name: "Jxck Dernyoungsay", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61584726548593&locale=th_TH" },
-    { id: 13, name: "Leo Payamarn", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/profile.php?id=61579549214581&locale=th_TH" },
-    { id: 14, name: "Billy Diabalito", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61584032180777&locale=th_TH" },
-    { id: 15, name: "Coco Ghost", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61581846855456&locale=th_TH" },
-    { id: 16, name: "Ton Aor", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/tonaor.orapirn?locale=th_TH" },
-    { id: 17, name: "Frame Nindwynd", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/frame.ninewynd?locale=th_TH" },
-    { id: 18, name: "Rodin Daragods", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "#" },
-    { id: 19, name: "Aiwee Inwza", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/AiweeMTN?locale=th_TH" },
-    { id: 20, name: "Sense Primestage", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61581854482778&locale=th_TH" },
+    { id: 1, name: "Hunter castellano", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/hunter.castellano.2025?locale=th_TH", tt: null },
+    { id: 2, name: "Nampunch Rubmaidai", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/nong.grace.954672?locale=th_TH", tt: null },
+    { id: 3, name: "Bank Whatisluv", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/elle.whatisluv?locale=th_TH", tt: null },
+    { id: 4, name: "Semi Gardos", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61587489156557&locale=th_TH", tt: null },
+    { id: 5, name: "Razer Pentagram", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61578682112163&locale=th_TH", tt: null },
+    { id: 6, name: "Cartier Layla", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=100025885462092&locale=th_TH", tt: null },
+    { id: 7, name: "MeePhu Satxnic", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/meephu.satxnic?locale=th_TH", tt: null },
+    { id: 8, name: "Saka Readyplus", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/saka.readyplus?locale=th_TH", tt: null },
+    { id: 9, name: "Mindbabe Ygz", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/babebee.bebe?locale=th_TH", tt: null },
+    { id: 10, name: "Thingthing Hologram", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61579514684476&locale=th_TH", tt: null },
+    { id: 11, name: "Ren Raknamaewmeow", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/Ren.WinterfellZiller?locale=th_TH", tt: null },
+    { id: 12, name: "Jxck Dernyoungsay", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61584726548593&locale=th_TH", tt: null },
+    { id: 13, name: "Leo Payamarn", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/profile.php?id=61579549214581&locale=th_TH", tt: null },
+    { id: 14, name: "Billy Diabalito", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61584032180777&locale=th_TH", tt: null },
+    { id: 15, name: "Coco Ghost", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61581846855456&locale=th_TH", tt: null },
+    { id: 16, name: "Ton Aor", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/tonaor.orapirn?locale=th_TH", tt: null },
+    { id: 17, name: "Frame Nindwynd", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/frame.ninewynd?locale=th_TH", tt: null },
+    { id: 18, name: "Rodin Daragods", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "#", tt: null },
+    { id: 19, name: "Aiwee Inwza", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/AiweeMTN?locale=th_TH", tt: null },
+    { id: 20, name: "Sense Primestage", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61581854482778&locale=th_TH", tt: null },
     { id: 21, name: "Fay Primestage", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/fay.388689/about?locale=th_TH", tt: "https://www.tiktok.com/@fayprimestage?lang=th-TH" },
   ];
 
@@ -43,7 +44,7 @@ export default function GhostGangUnified() {
     <>
       <title>GHOSTGANG</title>
 
-      {/* FIXED: เพิ่มระบบหน่วงเวลาเพื่อให้คำสั่ง setVolume ทำงานได้จริง */}
+      {/* เพลงพื้นหลัง (ระดับเสียง 10%) */}
       {isPlaying && (
         <div style={{ position: "fixed", top: "-1000px", left: "-1000px", opacity: 0, pointerEvents: "none" }}>
           <iframe
@@ -53,14 +54,13 @@ export default function GhostGangUnified() {
             allow="autoplay"
             onLoad={(e) => {
               const frame = e.target as HTMLIFrameElement;
-              
               setTimeout(() => {
                 frame.contentWindow?.postMessage(JSON.stringify({
                   event: "command",
                   func: "setVolume",
                   args: [10] 
                 }), "*");
-              }, 500);
+              }, 1000);
             }}
           ></iframe>
         </div>
@@ -80,13 +80,9 @@ export default function GhostGangUnified() {
               onClick={startExperience}
               className="group relative px-20 py-5 bg-transparent border border-gray-800 rounded-full overflow-hidden transition-all hover:border-white active:scale-95"
             >
-              <span className="relative z-10 font-bold tracking-[0.4em] text-xs">
-                Members List
-              </span>
+              <span className="relative z-10 font-bold tracking-[0.4em] text-xs">Members List</span>
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-              <span className="absolute inset-0 z-20 flex items-center justify-center font-bold tracking-[0.4em] text-xs text-black opacity-0 group-hover:opacity-100 transition-opacity">
-                Access Directory
-              </span>
+              <span className="absolute inset-0 z-20 flex items-center justify-center font-bold tracking-[0.4em] text-xs text-black opacity-0 group-hover:opacity-100 transition-opacity">Access Directory</span>
             </button>
           </div>
         )}
@@ -131,27 +127,36 @@ export default function GhostGangUnified() {
                     <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                   <div className="flex-grow">
-                    <h4 className={`text-lg font-black tracking-tight ${member.role === "VACANT" ? "text-gray-800 italic" : "text-gray-100 group-hover:text-white"}`}>
+                    <h4 className={`text-lg font-black tracking-tight text-gray-100 group-hover:text-white`}>
                       {member.name}
                     </h4>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className={`text-[8px] font-bold px-2 py-0.5 rounded tracking-widest ${member.role === "VACANT" ? "bg-gray-900 text-gray-800" : "bg-white/5 text-gray-500 border border-gray-800"}`}>
-                        {member.role === "VACANT" ? "VACANT" : `RANK: ${member.role}`}
+                      <span className="text-[8px] font-bold px-2 py-0.5 rounded tracking-widest bg-white/5 text-gray-500 border border-gray-800">
+                        RANK: {member.role}
                       </span>
                     </div>
                   </div>
-                  {member.fb && member.role !== "VACANT" && (
-                    <a href={member.fb} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-lg bg-[#0e0e0e] flex items-center justify-center border border-gray-900 opacity-30 group-hover:opacity-100 group-hover:border-gray-600 transition-all hover:bg-white hover:text-black">
-                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                  )}
+
+                  {/* ส่วน Social Buttons (Facebook & TikTok) */}
+                  <div className="flex flex-col gap-2">
+                    {member.fb && member.fb !== "#" && (
+                      <a href={member.fb} target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-[#0e0e0e] flex items-center justify-center border border-gray-900 opacity-30 hover:opacity-100 hover:bg-white hover:text-black transition-all">
+                        <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      </a>
+                    )}
+                    {member.tt && (
+                      <a href={member.tt} target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-[#0e0e0e] flex items-center justify-center border border-gray-900 opacity-30 hover:opacity-100 hover:bg-white hover:text-black transition-all">
+                        <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.23-.76.42-1.33 1.21-1.43 2.06-.02.26-.01.52.02.78.13.9.84 1.68 1.71 1.93.42.13.88.13 1.32.09 1.14-.14 2.11-.99 2.4-2.11.13-.44.14-.9.14-1.35V.02z"/></svg>
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
 
             <div className="mt-20 pt-10 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-[9px] tracking-[0.4em] text-gray-700 font-bold gap-4">
               <div>GATEWAY: ONLINE</div>
-              <div>ACTIVE_MEMBERS: {allMembers.filter((m) => m.role !== "VACANT").length} / {allMembers.length}</div>
+              <div>ACTIVE_MEMBERS: {allMembers.length} / 21</div>
               <div className="uppercase">Last Synced: 2026-04-10</div>
             </div>
           </div>
