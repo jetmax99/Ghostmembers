@@ -30,6 +30,9 @@ export default function GhostGangUnified() {
     { id: 16, name: "Ton Aor", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/tonaor.orapirn?locale=th_TH" },
     { id: 17, name: "Frame Nindwynd", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/frame.ninewynd?locale=th_TH" },
     { id: 18, name: "Rodin Daragods", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "#" },
+    { id: 19, name: "Aiwee Inwza", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/AiweeMTN?locale=th_TH" },
+    { id: 20, name: "Sense Primestage", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61581854482778&locale=th_TH" },
+    { id: 21, name: "Fay Primestage", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/fay.388689/about?locale=th_TH", tt: "https://www.tiktok.com/@fayprimestage?lang=th-TH" },
   ];
 
   const filtered = allMembers.filter((m) =>
