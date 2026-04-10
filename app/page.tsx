@@ -26,7 +26,7 @@ export default function GhostGangUnified() {
     { id: 12, name: "Jxck Dernyoungsay", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61584726548593&locale=th_TH" },
     { id: 13, name: "Leo Payamarn", role: "MEMBER", group: "GHOST GANG", color: "border-gray-900/30", fb: "https://web.facebook.com/profile.php?id=61579549214581&locale=th_TH" },
     { id: 14, name: "Billy Diabalito", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61584032180777&locale=th_TH" },
-    { id: 15, name: "Coco Ghost", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "#" },
+    { id: 15, name: "Coco Ghost", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/profile.php?id=61581846855456&locale=th_TH" },
     { id: 16, name: "Ton Aor", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "https://web.facebook.com/tonaor.orapirn?locale=th_TH" },
     { id: 17, name: "EMPTY SLOT", role: "VACANT", group: "GHOST GANG", color: "border-gray-900/30", fb: null },
     { id: 18, name: "Rodin Daragods", role: "MEMBER", group: "GHOST GANG", color: "border-gray-700", fb: "#" },
