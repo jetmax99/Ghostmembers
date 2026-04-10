@@ -53,7 +53,7 @@ export default function GhostGangUnified() {
             onLoad={(e) => {
               const frame = e.target as HTMLIFrameElement;
               // สั่งเบาเสียงเหลือ 20% ผ่าน YouTube API
-              frame.contentWindow?.postMessage('{"event":"command","func":"setVolume","args":[20]}', '*');
+              frame.contentWindow?.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
             }}
           ></iframe>
         </div>
