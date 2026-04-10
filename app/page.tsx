@@ -158,8 +158,6 @@ export default function GhostGangUnified() {
   );
 
   return (
-    <>
-    <title>GHOSTGANG</title>
     <main className="min-h-screen bg-[#050505] text-white font-sans uppercase overflow-x-hidden transition-all duration-700">
       {/* ----------------- VIEW 0: LANDING (GHOST GANG) ----------------- */}
       {view === 0 && (
