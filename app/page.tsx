@@ -42,14 +42,19 @@ export default function GhostGangUnified() {
     <>
       <title>GHOSTGANG</title>
 
-      {/* เพลงจาก YouTube จะโหลดเมื่อ isPlaying เป็น true (หลังกดปุ่ม) */}
+      {/* ระบบเพลงแบบปรับระดับเสียงได้ (ซ่อนไว้) */}
       {isPlaying && (
         <div style={{ position: "fixed", top: "-1000px", left: "-1000px", opacity: 0, pointerEvents: "none" }}>
           <iframe
             width="1"
             height="1"
-            src="https://www.youtube.com/embed/WDuBvEoL_m4?autoplay=1&loop=1&playlist=WDuBvEoL_m4"
+            src="https://www.youtube.com/embed/WDuBvEoL_m4?autoplay=1&loop=1&playlist=WDuBvEoL_m4&enablejsapi=1"
             allow="autoplay"
+            onLoad={(e) => {
+              const frame = e.target as HTMLIFrameElement;
+              // สั่งเบาเสียงเหลือ 20% ผ่าน YouTube API
+              frame.contentWindow?.postMessage('{"event":"command","func":"setVolume","args":[20]}', '*');
+            }}
           ></iframe>
         </div>
       )}
@@ -82,7 +87,6 @@ export default function GhostGangUnified() {
         {/* ----------------- VIEW 1: MEMBERS DIRECTORY ----------------- */}
         {view === 1 && (
           <div className="w-full max-w-7xl mx-auto p-6 md:p-12 animate-in slide-in-from-bottom-12 fade-in duration-700">
-            {/* Top Bar Navigation */}
             <div className="flex flex-col items-center mb-16 pt-10">
               <button
                 onClick={() => setView(0)}
@@ -94,7 +98,6 @@ export default function GhostGangUnified() {
                 GHOST GANG <span className="text-gray-800">MEMBERS</span>
               </h2>
 
-              {/* Search Input */}
               <div className="relative w-full max-w-2xl">
                 <input
                   type="text"
@@ -106,65 +109,33 @@ export default function GhostGangUnified() {
               </div>
             </div>
 
-            {/* Members Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((member) => (
                 <div
                   key={member.id}
                   className={`relative group bg-[#0a0a0a] border ${member.color} p-6 rounded-2xl flex items-center gap-6 hover:bg-[#111111] hover:border-white transition-all duration-300 overflow-hidden shadow-xl`}
                 >
-                  <div
-                    className={`absolute top-0 left-0 w-1 h-full bg-current ${
-                      member.role === "VACANT" ? "text-gray-900" : "text-gray-500"
-                    } opacity-30`}
-                  ></div>
-
+                  <div className={`absolute top-0 left-0 w-1 h-full bg-current ${member.role === "VACANT" ? "text-gray-900" : "text-gray-500"} opacity-30`}></div>
                   <div className="absolute top-4 right-6 text-[10px] font-mono text-gray-800 group-hover:text-gray-500 transition-colors">
                     #{String(member.id).padStart(2, "0")}
                   </div>
-
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 flex items-center justify-center flex-shrink-0 group-hover:border-gray-500 transition-all relative overflow-hidden">
-                    <span className="text-xl font-black text-gray-700 group-hover:text-white z-10">
-                      {member.name[0]}
-                    </span>
+                    <span className="text-xl font-black text-gray-700 group-hover:text-white z-10">{member.name[0]}</span>
                     <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
-
                   <div className="flex-grow">
-                    <h4
-                      className={`text-lg font-black tracking-tight ${
-                        member.role === "VACANT"
-                          ? "text-gray-800 italic"
-                          : "text-gray-100 group-hover:text-white"
-                      }`}
-                    >
+                    <h4 className={`text-lg font-black tracking-tight ${member.role === "VACANT" ? "text-gray-800 italic" : "text-gray-100 group-hover:text-white"}`}>
                       {member.name}
                     </h4>
                     <div className="flex items-center gap-2 mt-1">
-                      <span
-                        className={`text-[8px] font-bold px-2 py-0.5 rounded tracking-widest ${
-                          member.role === "VACANT"
-                            ? "bg-gray-900 text-gray-800"
-                            : "bg-white/5 text-gray-500 border border-gray-800"
-                        }`}
-                      >
-                        {member.role === "VACANT"
-                          ? "VACANT"
-                          : `RANK: ${member.role}`}
+                      <span className={`text-[8px] font-bold px-2 py-0.5 rounded tracking-widest ${member.role === "VACANT" ? "bg-gray-900 text-gray-800" : "bg-white/5 text-gray-500 border border-gray-800"}`}>
+                        {member.role === "VACANT" ? "VACANT" : `RANK: ${member.role}`}
                       </span>
                     </div>
                   </div>
-
                   {member.fb && member.role !== "VACANT" && (
-                    <a
-                      href={member.fb}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-10 h-10 rounded-lg bg-[#0e0e0e] flex items-center justify-center border border-gray-900 opacity-30 group-hover:opacity-100 group-hover:border-gray-600 transition-all hover:bg-white hover:text-black"
-                    >
-                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                      </svg>
+                    <a href={member.fb} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-lg bg-[#0e0e0e] flex items-center justify-center border border-gray-900 opacity-30 group-hover:opacity-100 group-hover:border-gray-600 transition-all hover:bg-white hover:text-black">
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
                   )}
                 </div>
@@ -173,18 +144,13 @@ export default function GhostGangUnified() {
 
             <div className="mt-20 pt-10 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-[9px] tracking-[0.4em] text-gray-700 font-bold gap-4">
               <div>GATEWAY: ONLINE</div>
-              <div>
-                ACTIVE_MEMBERS:{" "}
-                {allMembers.filter((m) => m.role !== "VACANT").length} /{" "}
-                {allMembers.length}
-              </div>
+              <div>ACTIVE_MEMBERS: {allMembers.filter((m) => m.role !== "VACANT").length} / {allMembers.length}</div>
               <div className="uppercase">Last Synced: 2026-04-10</div>
             </div>
           </div>
         )}
 
         <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-
         <footer className="fixed bottom-6 w-full text-center text-[8px] tracking-[0.8em] text-gray-800 uppercase pointer-events-none z-50">
           Ghost Gang • Security Protocol v2.0
         </footer>
